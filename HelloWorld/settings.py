@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'books',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,22 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    'mysql_dev':{
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'genealogy',
+        'USER': 'homestead',
+        'PORT':'33060',
+        'PASSWORD': 'secret',
+        "HOST": "127.0.0.1",
+    },
+}
+
+DATABASE_ROUTERS = ['HelloWorld.database_router.DatabaseAppsRouter']
+DATABASE_APPS_MAPPING = {
+    # example:
+    #'app_name':'database_name',
+    'blog': 'mysql_dev',
 }
 
 
